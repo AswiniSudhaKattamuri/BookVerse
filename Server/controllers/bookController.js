@@ -90,4 +90,37 @@ const deleteBook = async (req, res) => {
     });
   }
 };
-module.exports={addBook, getAllBooks,getBookById,updateBook,deleteBook};
+const searchBooks = async (req, res) => {
+  try {
+    const { title } = req.query;
+
+    const books = await Book.find({
+      title: { $regex: title, $options: "i" },
+    });
+
+    res.status(200).json({
+      books,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+const filterBooksByCategory = async (req, res) => {
+  try {
+    const { category } = req.query;
+
+    const books = await Book.find({ category });
+
+    res.status(200).json({
+      books,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+module.exports={addBook, getAllBooks,getBookById,updateBook,deleteBook,searchBooks,filterBooksByCategory};
