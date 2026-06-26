@@ -1,0 +1,159 @@
+.wishlist-layout {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+  background: #020817;
+  min-height: calc(100vh - 80px);
+}
+
+.wishlist-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.profile-card {
+  background: #111827;
+  color: white;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  width: 60px;
+  height: 60px;
+  background: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-menu {
+  background: #111827;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-item:hover {
+  background: #1e293b;
+}
+
+.menu-item.active {
+  background: #2563eb;
+}
+
+.wishlist-content {
+  flex: 1;
+}
+
+.wishlist-content h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+/* Wishlist Book Row */
+.wishlist-book {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.wishlist-book img {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.wishlist-book-details {
+  flex: 1;
+}
+
+.wishlist-book-details h3 {
+  color: white;
+  margin-bottom: 8px;
+}
+
+.wishlist-book-details p {
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.wishlist-book-details h4 {
+  color: #3b82f6;
+}
+
+.wishlist-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.move-cart-btn,
+.remove-btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.move-cart-btn {
+  background: #2563eb;
+}
+
+.move-cart-btn:hover {
+  background: #1d4ed8;
+}
+
+.remove-btn {
+  background: #dc2626;
+}
+
+.remove-btn:hover {
+  background: #b91c1c;
+}
+
+.wishlist-content {
+  flex: 1;
+  background: #09122c;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.wishlist-heading {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.empty-wishlist {
+  color: #94a3b8;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.empty-wishlist h3 {
+  color: white;
+  margin-bottom: 10px;
+}	

@@ -1,0 +1,124 @@
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617, #0f172a, #1d4ed8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-overlay {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-card {
+  width: 450px;
+  padding: 45px;
+  border-radius: 22px;
+  background: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 50px rgba(37, 99, 235, 0.25);
+  color: white;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #60a5fa;
+}
+
+.register-card h2 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.register-card p {
+  color: #cbd5e1;
+  margin-bottom: 25px;
+}
+
+.register-input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 18px;
+  background: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.register-input:focus {
+  border: 1px solid #3b82f6;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.bottom-text {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.bottom-text span {
+  color: #60a5fa;
+  font-weight: bold;
+  cursor: pointer;
+}
+.password-container {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.password-container .register-input {
+  width: 100%;
+  padding-right: 50px;
+  box-sizing: border-box;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon:hover {
+  color: #60a5fa;
+}
+
+.password-hint {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: -8px 0 16px;
+}
+.password-error {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}

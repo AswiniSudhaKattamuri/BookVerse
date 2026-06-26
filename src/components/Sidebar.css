@@ -1,0 +1,50 @@
+.sidebar {
+  width: 320px;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #111827;
+  border-radius: 12px;
+  padding: 28px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.filter-section {
+  margin-bottom: 32px;
+}
+
+.filter-section h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #60a5fa;
+}
+
+.filter-section label {
+  display: block;
+  font-size: 18px;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.filter-section input {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.clear-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
