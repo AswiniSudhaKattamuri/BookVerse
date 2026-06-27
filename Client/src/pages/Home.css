@@ -1,0 +1,49 @@
+.content-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 30px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 380px;      /* Increase to 380px */
+  min-width: 380px;
+  min-height: 100vh;
+  background: #111827;
+  border-radius: 12px;
+  padding: 28px;
+  color: white;
+  box-sizing: border-box;
+}
+
+/* Books area */
+.books-container {
+  width: 75%;
+  background: #0f172a;
+  border-radius: 16px;
+  padding: 20px;
+}
+.section-title {
+  margin: 0 0 20px 0;
+  font-size: 32px;
+  color: white;
+}
+
+/* Cards */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 24px;
+}
+@media (max-width: 1300px) {
+  .books-grid {
+    grid-template-columns: repeat(2, 380px);
+  }
+}
+
+@media (max-width: 850px) {
+  .books-grid {
+    grid-template-columns: 380px;
+  }
+}

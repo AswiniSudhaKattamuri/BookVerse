@@ -1,0 +1,108 @@
+.book-card {
+   width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  background: #141d35;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+   border: 1px solid transparent;
+}
+.book-card:hover {
+  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
+    border-color: #2563eb;
+}
+
+.book-image {
+ width: 100%;
+  height: 330px;      /* Try 280px or 300px */
+  object-fit: contain;
+  background-color: #0f172a;
+   transition: transform 0.3s ease;
+}
+.book-card:hover .book-image {
+  transform: scale(1.05);
+}
+.book-content {
+  padding: 14px;
+}
+
+.book-content h3 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 6px;
+   transition: color 0.3s ease;
+}
+
+.book-card:hover .book-content h3 {
+  color: #60a5fa;
+}
+
+.author {
+  color: #b0b8d1;
+  margin-bottom: 8px;
+}
+
+.price {
+  color: #4da3ff;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.wishlist-btn {
+  width: 52px;
+  height: 52px;
+  border: 2px solid #334155;
+  border-radius: 12px;
+  background: #111827;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.wishlist-btn:hover {
+  transform: translateY(-2px);
+  border-color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
+.wishlist-btn.active {
+  border-color: #ef4444;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.45);
+}
+
+.cart-btn {
+  flex: 1;
+  height: 52px;
+  border: 2px solid #2563eb;
+  border-radius: 12px;
+  background: #1d4ed8;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.cart-btn:hover {
+  transform: translateY(-2px);
+  background: #2563eb;
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.5);
+} 	
