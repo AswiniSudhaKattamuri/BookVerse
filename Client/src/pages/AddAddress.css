@@ -80,3 +80,38 @@
 }
 
 }
+.address-btns{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.save-btn,
+.cancel-btn{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.save-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+
+.cancel-btn{
+    background:#334155;
+    color:white;
+}
+
+.cancel-btn:hover{
+    background:#475569;
+}

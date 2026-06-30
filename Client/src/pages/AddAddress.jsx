@@ -51,6 +51,19 @@ function AddAddress() {
       toast.error("Failed to Add Address");
     }
   };
+  const handleCancel = () => {
+
+  if (location.state?.fromCheckout) {
+
+    navigate("/payment");
+
+  } else {
+
+    navigate("/address");
+
+  }
+
+};
 
   return (
     <>
@@ -129,9 +142,24 @@ function AddAddress() {
               />
             </div>
 
-            <button type="submit">
-              Save Address
-            </button>
+            <div className="address-btns">
+
+  <button
+    type="submit"
+    className="save-btn"
+  >
+    Save Address
+  </button>
+
+  <button
+    type="button"
+    className="cancel-btn"
+    onClick={handleCancel}
+  >
+    Cancel
+  </button>
+
+</div>
           </form>
         </div>
       </div>

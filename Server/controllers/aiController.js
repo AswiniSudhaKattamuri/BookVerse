@@ -1,62 +1,60 @@
 const Book = require("../models/Book");
-
 const { askAI } = require("../services/aiService");
 
 const chatWithAI = async (req, res) => {
-
   try {
 
-    const { message } = req.body;
+    const { messages } = req.body;
 
-const messageLower = message.toLowerCase();
+    const message =
+      messages[messages.length - 1].text;
 
-let query = {};
+    const messageLower = message.toLowerCase();
 
-const categories = [
-  "romance",
-  "romantic thriller",
-  "thriller",
-  "mystery",
-  "horror",
-  "fantasy",
-  "science fiction",
-  "selfhelp",
-  "business",
-  "finance",
-  "biography",
-  "classic",
-];
+    let query = {};
 
-const matchedCategory = categories.find((category) =>
-  messageLower.includes(category)
-);
+    const categories = [
+      "romance",
+      "romantic thriller",
+      "thriller",
+      "mystery",
+      "horror",
+      "fantasy",
+      "science fiction",
+      "selfhelp",
+      "business",
+      "finance",
+      "biography",
+      "classic",
+    ];
 
-if (matchedCategory) {
-  query.category = new RegExp(
-    `^${matchedCategory}$`,
-    "i"
-  );
-}
+    const matchedCategory = categories.find((category) =>
+      messageLower.includes(category)
+    );
 
-const budget = message.match(/\d+/);
+    if (matchedCategory) {
+      query.category = new RegExp(
+        `^${matchedCategory}$`,
+        "i"
+      );
+    }
 
-if (budget) {
-  query.price = {
-    $lte: Number(budget[0]),
-  };
-}
+    const budget = message.match(/\d+/);
 
-const books = await Book.find(query);
-if (books.length === 0) {
+    if (budget) {
+      query.price = {
+        $lte: Number(budget[0]),
+      };
+    }
 
-  return res.json({
+    const books = await Book.find(query).limit(3);
 
-    reply:
-      "😔 Sorry! I couldn't find any books matching your request in BookVerse. Try another category or budget."
-
-  });
-
-}
+    if (books.length === 0) {
+      return res.json({
+        reply:
+          "😔 Sorry! I couldn't find any books matching your request in BookVerse. Try another category or budget.",
+      });
+    }
 
     const formattedBooks = books
       .map(
@@ -72,17 +70,16 @@ Stock: ${book.stock}
       .join("\n");
 
     const reply = await askAI(
-      message,
-      formattedBooks
-    );
+  messages,
+  formattedBooks
+);
 
-    res.json({
-      reply,
-    });
+res.json({
+  reply,
+  books,
+});
 
-  }
-
-  catch (error) {
+  } catch (error) {
 
     console.log(error);
 
@@ -91,7 +88,6 @@ Stock: ${book.stock}
     });
 
   }
-
 };
 
 module.exports = {

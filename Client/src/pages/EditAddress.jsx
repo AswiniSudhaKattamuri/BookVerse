@@ -64,6 +64,19 @@ function EditAddress() {
     }
   };
 
+  const handleCancel = () => {
+
+  if (location.state?.fromCheckout) {
+
+    navigate("/payment");
+
+  } else {
+
+    navigate("/address");
+
+  }
+
+};
   return (
     <>
       <Navbar />

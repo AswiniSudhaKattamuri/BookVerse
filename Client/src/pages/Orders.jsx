@@ -36,51 +36,92 @@ function Orders() {
 
         <div className="orders-sidebar">
 
-          <h2>Filters</h2>
+  <div className="profile-card">
 
-          <div className="filter-section">
+    <div className="profile-avatar">
+      👤
+    </div>
 
-            <h3>ORDER STATUS</h3>
+    <h2>My Orders</h2>
 
-            <label>
-              <input type="checkbox" />
-              Processing
-            </label>
+    {/* <p>Track all your purchases</p> */}
 
-            <label>
-              <input type="checkbox" />
-              Shipped
-            </label>
+  </div>
 
-            <label>
-              <input type="checkbox" />
-              Delivered
-            </label>
+  <div className="stats-card">
 
-          </div>
+    <div className="stat-item">
+      <span>📦 Total Orders</span>
+      <strong>{orders.length}</strong>
+    </div>
 
-          <div className="filter-section">
+    <div className="stat-item">
+      <span>🚚 Delivered</span>
+      <strong>
+        {
+          orders.filter(
+            order => order.status === "Delivered"
+          ).length
+        }
+      </strong>
+    </div>
 
-            <h3>ORDER TIME</h3>
+    <div className="stat-item">
+      <span>⏳ Processing</span>
+      <strong>
+        {
+          orders.filter(
+            order => order.status === "Processing"
+          ).length
+        }
+      </strong>
+    </div>
 
-            <label>
-              <input type="checkbox" />
-              Last 30 Days
-            </label>
+  </div>
 
-            <label>
-              <input type="checkbox" />
-              2026
-            </label>
+  <div className="filter-section">
 
-            <label>
-              <input type="checkbox" />
-              Older
-            </label>
+    <h3>📦 ORDER STATUS</h3>
 
-          </div>
+    <label>
+      <input type="checkbox" />
+      Processing
+    </label>
 
-        </div>
+    <label>
+      <input type="checkbox" />
+      Shipped
+    </label>
+
+    <label>
+      <input type="checkbox" />
+      Delivered
+    </label>
+
+  </div>
+
+  <div className="filter-section">
+
+    <h3>📅 ORDER TIME</h3>
+
+    <label>
+      <input type="checkbox" />
+      Last 30 Days
+    </label>
+
+    <label>
+      <input type="checkbox" />
+      2026
+    </label>
+
+    <label>
+      <input type="checkbox" />
+      Older
+    </label>
+
+  </div>
+
+</div>
 
         {/* Right */}
 

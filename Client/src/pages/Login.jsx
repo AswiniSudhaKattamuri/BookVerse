@@ -6,13 +6,14 @@ import { Eye, EyeOff } from "lucide-react";
 import "../pages/Login.css";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
-
+import { useAI } from "../context/AIContext";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 const { loadCartCount } = useCart();
 const { loadWishlistCount } = useWishlist();
+const { clearChat } = useAI();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -26,12 +27,18 @@ const { loadWishlistCount } = useWishlist();
 
       localStorage.setItem("token", data.token);
 localStorage.setItem("user", JSON.stringify(data.user));
+sessionStorage.setItem("showAI", "true");
+clearChat();
 
 await loadCartCount();
 await loadWishlistCount();
 
 toast.success("Login Successful!");
-navigate("/");
+navigate("/", {
+  state: {
+    openAI: true,
+  },
+});
     } catch (error) {
       toast.error(
         error.response?.data?.message || "Login failed"

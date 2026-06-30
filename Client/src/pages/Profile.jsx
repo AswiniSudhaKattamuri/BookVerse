@@ -6,12 +6,13 @@ import toast from "react-hot-toast";
 import { getProfile, updateProfile } from "../services/userService";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
+import { useAI } from "../context/AIContext";
 function Profile() {
 
   const navigate = useNavigate();
   const { setCartCount } = useCart();
 const { setWishlistCount } = useWishlist();
-
+const { clearChat } = useAI();
   const [user, setUser] = useState({});
   
 
@@ -90,7 +91,7 @@ toast.error("Failed");
          <button
   className="logout-btn"
   onClick={() => {
-
+	clearChat();
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
@@ -98,7 +99,7 @@ toast.error("Failed");
     setWishlistCount(0);
 
     toast.success("Logged Out");
-
+	
     navigate("/login");
 
   }}

@@ -23,7 +23,7 @@ function Address() {
   try {
     const data = await getAddresses();
 
-    console.log(data);
+    
 
     setAddresses(data.addresses);
   } catch (error) {
@@ -73,24 +73,39 @@ function Address() {
 
     <div className="address-header">
 
-        <h1>
-  {location.state?.fromCheckout
-    ? "Select Delivery Address"
-    : "My Addresses"}
-</h1>
+  <div className="header-left">
 
-        <button
-            className="add-address-btn"
-            onClick={() =>
-  navigate("/add-address", {
-    state: location.state,
-  })
-}
-        >
-            + Add New Address
-        </button>
+    {location.state?.fromCheckout && (
 
-    </div>
+      <button
+        className="back-btn"
+        onClick={() => navigate("/payment")}
+      >
+        ← Back
+      </button>
+
+    )}
+
+    <h1>
+      {location.state?.fromCheckout
+        ? "Select Delivery Address"
+        : "My Addresses"}
+    </h1>
+
+  </div>
+
+  <button
+    className="add-address-btn"
+    onClick={() =>
+      navigate("/add-address", {
+        state: location.state,
+      })
+    }
+  >
+    + Add New Address
+  </button>
+
+</div>
 
     {addresses.length === 0 ? (
 

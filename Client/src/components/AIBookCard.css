@@ -1,0 +1,43 @@
+.ai-book-card{
+    display:flex;
+    gap:15px;
+    margin-top:15px;
+    background:#1e293b;
+    border-radius:12px;
+    padding:12px;
+}
+
+.ai-book-card img{
+    width:90px;
+    height:130px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.ai-book-info{
+    flex:1;
+}
+
+.ai-book-info h4{
+    color:white;
+    margin-bottom:8px;
+}
+
+.ai-book-info p{
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+.ai-book-info h3{
+    color:#3b82f6;
+    margin:10px 0;
+}
+
+.ai-book-info button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
