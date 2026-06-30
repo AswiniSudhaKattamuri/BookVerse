@@ -1,0 +1,82 @@
+.add-address-page {
+  min-height: calc(100vh - 80px);
+  background: #020817;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.add-address-card {
+  width: 100%;
+  max-width: 700px;
+  background: #111827;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.add-address-card h1 {
+  color: white;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.add-address-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.add-address-card input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.add-address-card input:focus {
+  border-color: #3b82f6;
+}
+
+.row {
+  display: flex;
+  gap: 18px;
+}
+
+.row input {
+  flex: 1;
+}
+
+.add-address-card button {
+  margin-top: 15px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #f97316;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.add-address-card button:hover {
+  background: #ea580c;
+}
+
+@media(max-width:768px){
+
+.row{
+    flex-direction:column;
+}
+
+.add-address-card{
+    padding:25px;
+}
+
+}

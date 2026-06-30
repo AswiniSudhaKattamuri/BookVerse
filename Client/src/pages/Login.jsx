@@ -4,12 +4,15 @@ import { loginUser } from "../services/authService";
 import toast from "react-hot-toast";
 import { Eye, EyeOff } from "lucide-react";
 import "../pages/Login.css";
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+const { loadCartCount } = useCart();
+const { loadWishlistCount } = useWishlist();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -21,15 +24,14 @@ function Login() {
         password,
       });
 
-      // Save token
       localStorage.setItem("token", data.token);
+localStorage.setItem("user", JSON.stringify(data.user));
 
-      // Save logged-in user
-      localStorage.setItem("user", JSON.stringify(data.user));
+await loadCartCount();
+await loadWishlistCount();
 
-      toast.success("Login Successful!");
-
-      navigate("/");
+toast.success("Login Successful!");
+navigate("/");
     } catch (error) {
       toast.error(
         error.response?.data?.message || "Login failed"

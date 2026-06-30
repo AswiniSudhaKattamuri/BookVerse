@@ -16,15 +16,74 @@ const addBook=async(req,res)=>{
 
 const getAllBooks = async (req, res) => {
   try {
-    const books = await Book.find();
+
+    const {
+      search,
+      category,
+      minPrice,
+      maxPrice,
+    } = req.query;
+
+    let filter = {};
+
+    if (search) {
+
+      filter.$or = [
+
+        {
+          title: {
+            $regex: search,
+            $options: "i",
+          },
+        },
+
+        {
+          author: {
+            $regex: search,
+            $options: "i",
+          },
+        },
+
+      ];
+
+    }
+
+    if (category) {
+
+      filter.category = category;
+
+    }
+
+    if (minPrice || maxPrice) {
+
+      filter.price = {};
+
+      if (minPrice) {
+
+        filter.price.$gte = Number(minPrice);
+
+      }
+
+      if (maxPrice) {
+
+        filter.price.$lte = Number(maxPrice);
+
+      }
+
+    }
+
+    const books = await Book.find(filter);
 
     res.status(200).json({
       books,
     });
+
   } catch (error) {
+
     res.status(500).json({
       message: error.message,
     });
+
   }
 };
 const getBookById = async (req, res) => {
@@ -90,37 +149,6 @@ const deleteBook = async (req, res) => {
     });
   }
 };
-const searchBooks = async (req, res) => {
-  try {
-    const { title } = req.query;
 
-    const books = await Book.find({
-      title: { $regex: title, $options: "i" },
-    });
 
-    res.status(200).json({
-      books,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-};
-
-const filterBooksByCategory = async (req, res) => {
-  try {
-    const { category } = req.query;
-
-    const books = await Book.find({ category });
-
-    res.status(200).json({
-      books,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-};
-module.exports={addBook, getAllBooks,getBookById,updateBook,deleteBook,searchBooks,filterBooksByCategory};
+module.exports={addBook, getAllBooks,getBookById,updateBook,deleteBook};

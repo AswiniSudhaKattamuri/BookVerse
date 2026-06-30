@@ -6,8 +6,7 @@ const {
   getBookById,
   updateBook,
   deleteBook,
-  searchBooks,
-  filterBooksByCategory,
+  
 } = require("../controllers/bookController");
 
 const authMiddleware = require("../middleware/authMiddleware");
@@ -22,8 +21,6 @@ router.delete("/:id", authMiddleware, adminMiddleware, deleteBook);
 
 // Public
 router.get("/", getAllBooks);
-router.get("/search/title", searchBooks);
-router.get("/filter/category", filterBooksByCategory);
 router.get("/:id", getBookById);
 
 module.exports = router;

@@ -7,6 +7,7 @@ const orderSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+
     items: [
       {
         book: {
@@ -14,19 +15,43 @@ const orderSchema = new mongoose.Schema(
           ref: "Book",
           required: true,
         },
+
         quantity: {
           type: Number,
           required: true,
         },
       },
     ],
+
+    address: {
+      fullName: String,
+      phone: String,
+      house: String,
+      street: String,
+      city: String,
+      state: String,
+      pincode: String,
+      landmark: String,
+    },
+
     totalAmount: {
       type: Number,
       required: true,
     },
-    status: {
+
+    paymentMethod: {
+      type: String,
+      default: "Cash on Delivery",
+    },
+
+    paymentStatus: {
       type: String,
       default: "Pending",
+    },
+
+    status: {
+      type: String,
+      default: "Processing",
     },
   },
   {

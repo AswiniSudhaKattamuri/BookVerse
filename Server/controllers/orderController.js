@@ -1,8 +1,19 @@
 const Order = require("../models/Order");
 const Cart = require("../models/Cart");
 const Book = require("../models/Book");
+const Address = require("../models/Address");
 
 const placeOrder = async (req, res) => {
+	const defaultAddress = await Address.findOne({
+  user: req.user.id,
+  isDefault: true,
+});
+
+if (!defaultAddress) {
+  return res.status(400).json({
+    message: "Please select a default delivery address",
+  });
+}
   try {
     const cart = await Cart.findOne({ user: req.user.id }).populate("items.book");
 
@@ -17,15 +28,34 @@ const placeOrder = async (req, res) => {
     cart.items.forEach((item) => {
       totalAmount += item.book.price * item.quantity;
     });
+const { paymentMethod } = req.body;
+   const order = await Order.create({
+  user: req.user.id,
 
-    const order = await Order.create({
-      user: req.user.id,
-      items: cart.items.map((item) => ({
-        book: item.book._id,
-        quantity: item.quantity,
-      })),
-      totalAmount,
-    });
+  items: cart.items.map((item) => ({
+    book: item.book._id,
+    quantity: item.quantity,
+  })),
+
+  address: {
+    fullName: defaultAddress.fullName,
+    phone: defaultAddress.phone,
+    house: defaultAddress.house,
+    street: defaultAddress.street,
+    city: defaultAddress.city,
+    state: defaultAddress.state,
+    pincode: defaultAddress.pincode,
+    landmark: defaultAddress.landmark,
+  },
+
+  totalAmount,
+
+  paymentMethod,
+
+  paymentStatus: "Pending",
+
+  status: "Processing",
+});
 
     // Clear cart after successful order
     cart.items = [];

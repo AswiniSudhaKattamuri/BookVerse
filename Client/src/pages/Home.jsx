@@ -4,8 +4,14 @@ import BookCard from "../components/BookCard";
 import "./Home.css";
 import { useBooks } from "../viewmodels/useBooks";
 import Sidebar from "../components/Sidebar";
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 function Home() {
-  const { books } = useBooks();
+  const {
+  books,
+  filters,
+  setFilters,
+} = useBooks();
   console.log(books); 
 
   return (
@@ -13,7 +19,10 @@ function Home() {
       <Navbar />
       <Hero />
 <div className="content-layout">
-  <Sidebar />
+  <Sidebar
+  filters={filters}
+  setFilters={setFilters}
+/>
 
   <div className="books-container">
     <h2 className="section-title">🔥 Trending Books</h2>

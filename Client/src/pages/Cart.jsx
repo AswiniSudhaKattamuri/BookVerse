@@ -6,22 +6,28 @@ import {
   removeFromCart,
 } from "../services/cartService";
 import "./Cart.css";
-
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchCart();
   }, []);
+  const { loadCartCount } = useCart();
 
   const fetchCart = async () => {
-    try {
-      const data = await getCart();
-      setCartItems(data.cart?.items || []);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    const data = await getCart();
+
+    setCartItems(data.cart?.items || []);
+
+    await loadCartCount();   // <-- Update Navbar count
+
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   const increaseQuantity = async (bookId, quantity) => {
     await updateCartQuantity(bookId, quantity + 1);
@@ -159,9 +165,12 @@ function Cart() {
             🎉 You saved ₹{discount} on this order
           </p>
 
-          <button className="checkout-button">
-            PLACE ORDER
-          </button>
+          <button
+  className="checkout-button"
+  onClick={() => navigate("/checkout")}
+>
+  Proceed to Checkout
+</button>
         </div>
       </div>
     </>
