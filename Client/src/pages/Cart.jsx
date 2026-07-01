@@ -117,6 +117,23 @@ function Cart() {
                     >
                       +
                     </button>
+					<button
+  className="buy-now-btn"
+  onClick={() =>
+    navigate("/address", {
+      state: {
+		fromCheckout:true,
+        fromCart: true,
+        buyNow: {
+          book: item.book,
+          quantity: item.quantity,
+        },
+      },
+    })
+  }
+>
+  Buy Now
+</button>
 
                     <button
                       className="remove-btn"

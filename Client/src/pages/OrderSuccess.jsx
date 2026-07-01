@@ -5,40 +5,57 @@ import "./OrderSuccess.css";
 
 function OrderSuccess() {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    return (
-        <>
-            <Navbar />
+  return (
+    <>
+      <Navbar />
 
-            <div className="success-page">
+      <div className="success-page">
 
-                <div className="success-card">
+        <div className="success-card">
 
-                    <CheckCircle
-                        size={90}
-                        color="#22c55e"
-                    />
+          <div className="success-icon">
+            <CheckCircle size={95} />
+          </div>
 
-                    <h1>
-                        Order Placed Successfully!
-                    </h1>
+          <h1>🎉 Order Confirmed!</h1>
 
-                    <p>
-                        Thank you for shopping with BookVerse.
-                    </p>
+          <p className="success-message">
+            Your payment was successful and your books are now being prepared for shipment.
+          </p>
 
-                    <button
-                        onClick={() => navigate("/orders")}
-                    >
-                        View My Orders
-                    </button>
+          <div className="delivery-box">
 
-                </div>
+            <h3>📦 Estimated Delivery</h3>
 
-            </div>
-        </>
-    );
+            <p>Within <strong>3 - 5 Business Days</strong></p>
+
+          </div>
+
+          <div className="success-buttons">
+
+            <button
+              className="orders-btn"
+              onClick={() => navigate("/orders")}
+            >
+              📦 View My Orders
+            </button>
+
+            <button
+              className="shop-btn"
+              onClick={() => navigate("/")}
+            >
+              📚 Continue Shopping
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </>
+  );
 }
 
 export default OrderSuccess;

@@ -1,0 +1,29 @@
+.demo-otp{
+
+margin:15px 0;
+
+padding:12px;
+
+background:#eef4ff;
+
+border-radius:10px;
+
+color:#2563eb;
+
+text-align:center;
+
+font-size:16px;
+
+}
+
+.demo-otp strong{
+
+display:block;
+
+font-size:24px;
+
+margin-top:8px;
+
+letter-spacing:5px;
+
+}

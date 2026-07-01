@@ -1,0 +1,147 @@
+.footer{
+    margin-top:70px;
+    background:#0b1120;
+    color:white;
+}
+
+.footer-top{
+    height:4px;
+    background:linear-gradient(90deg,#2563eb,#f97316,#22c55e);
+}
+
+.footer-container{
+    max-width:1350px;
+    margin:auto;
+    padding:60px 40px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.4fr;
+    gap:45px;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.footer-logo h2{
+    font-size:30px;
+}
+
+.footer-about p{
+    color:#94a3b8;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.newsletter{
+    display:flex;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+.newsletter input{
+    flex:1;
+    border:none;
+    padding:14px;
+    outline:none;
+    background:#1e293b;
+    color:white;
+}
+
+.newsletter button{
+    width:60px;
+    border:none;
+    background:#f97316;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.newsletter button:hover{
+    background:#ea580c;
+}
+
+.footer-links h3,
+.footer-contact h3{
+    margin-bottom:20px;
+}
+
+.footer-links a{
+    display:block;
+    color:#94a3b8;
+    text-decoration:none;
+    margin-bottom:13px;
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:white;
+    transform:translateX(6px);
+}
+
+.footer-contact p{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#94a3b8;
+    margin-bottom:18px;
+}
+
+.footer-bottom{
+    border-top:1px solid #1e293b;
+    text-align:center;
+    padding:22px;
+    color:#94a3b8;
+}
+
+.footer-bottom strong{
+    color:white;
+}
+
+@media(max-width:950px){
+
+.footer-container{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.footer-logo{
+    justify-content:center;
+}
+
+.footer-contact p{
+    justify-content:center;
+}
+
+}
+.tagline{
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.footer-stats{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    padding:25px 0;
+    border-top:1px solid #1e293b;
+}
+
+.footer-stats h3{
+    color:#f97316;
+    font-size:28px;
+}
+
+.footer-stats p{
+    color:#94a3b8;
+    margin-top:5px;
+}
+
+@media(max-width:900px){
+    .footer-stats{
+        flex-direction:column;
+        gap:25px;
+    }
+}

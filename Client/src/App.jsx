@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -15,11 +15,22 @@ import AddAddress from "./pages/AddAddress";
 import EditAddress from "./pages/EditAddress";
 import OrderSuccess from "./pages/OrderSuccess";
 import Payment from "./pages/Payment";
+
 import ChatBot from "./components/ChatBot";
-function App() {
+import Footer from "./components/Footer";
+
+function Layout() {
+
+  const location = useLocation();
+
+  const showFooter =
+    location.pathname === "/" ||
+    location.pathname.startsWith("/book/");
+
   return (
-    <BrowserRouter>
+    <>
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -28,18 +39,29 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/book/:id" element={<BookDetails />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/address" element={<Address />} />
+        <Route path="/add-address" element={<AddAddress />} />
+        <Route path="/edit-address/:id" element={<EditAddress />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="*" element={<NotFound />} />
-		<Route path="/checkout" element={<Checkout/>}/>
-		<Route path="/address" element={<Address />} />
-		<Route path="/add-address" element={<AddAddress/>}/>
-		<Route path="/edit-address/:id" element={<EditAddress />} />
-		<Route path="/order-success" element={<OrderSuccess/>}/>
-		<Route path="/payment" element={<Payment />} />
 
       </Routes>
-	  <ChatBot/>
+
+      {showFooter && <Footer />}
+
+      <ChatBot />
+    </>
+  );
+}
+function App() {
+  return (
+    <BrowserRouter>
+      <Layout />
     </BrowserRouter>
   );
 }
 
 export default App;
+

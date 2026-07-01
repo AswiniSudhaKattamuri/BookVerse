@@ -4,32 +4,111 @@
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:40px;
 }
 
 .success-card{
+    width:100%;
+    max-width:650px;
     background:#111827;
+    border-radius:22px;
     padding:50px;
-    border-radius:20px;
     text-align:center;
     color:white;
-    width:500px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    animation:pop .5s ease;
+}
+
+.success-icon{
+    width:120px;
+    height:120px;
+    margin:auto;
+    border-radius:50%;
+    background:#dcfce7;
+    color:#16a34a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:25px;
 }
 
 .success-card h1{
-    margin:25px 0;
+    font-size:38px;
+    margin-bottom:18px;
 }
 
-.success-card p{
+.success-message{
     color:#cbd5e1;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.delivery-box{
+    background:#1e293b;
+    border-radius:15px;
+    padding:20px;
     margin-bottom:35px;
 }
 
-.success-card button{
+.delivery-box h3{
+    margin-bottom:10px;
+    color:#22c55e;
+}
+
+.delivery-box p{
+    color:white;
+    font-size:18px;
+}
+
+.success-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.orders-btn,
+.shop-btn{
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.orders-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.orders-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-3px);
+}
+
+.shop-btn{
     background:#f97316;
     color:white;
-    border:none;
-    padding:15px 28px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:16px;
+}
+
+.shop-btn:hover{
+    background:#ea580c;
+    transform:translateY(-3px);
+}
+
+@keyframes pop{
+
+    0%{
+        transform:scale(.85);
+        opacity:0;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
 }

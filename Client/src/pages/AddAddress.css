@@ -115,3 +115,56 @@
 .cancel-btn:hover{
     background:#475569;
 }
+.address-btns{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.save-btn,
+.cancel-btn{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.save-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+
+.cancel-btn{
+    background:#334155;
+    color:white;
+}
+
+.cancel-btn:hover{
+    background:#475569;
+}
+.back-page-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:none;
+    border:none;
+    color:#2563eb;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    margin-bottom:18px;
+    transition:.3s;
+}
+
+.back-page-btn:hover{
+    color:#1d4ed8;
+    transform:translateX(-4px);
+}

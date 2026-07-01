@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  useNavigate,
+  useParams,
+  useLocation,
+} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import {
   getAddresses,
   updateAddress,
 } from "../services/addressServices";
 import toast from "react-hot-toast";
+import { ArrowLeft } from "lucide-react";
 import "./AddAddress.css";
 
 function EditAddress() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -51,20 +57,34 @@ function EditAddress() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    try {
-      await updateAddress(id, formData);
+  e.preventDefault();
 
-      toast.success("Address Updated Successfully 🎉");
+  try {
+
+    await updateAddress(id, formData);
+
+    toast.success("Address Updated Successfully 🎉");
+
+    if (location.state?.fromCheckout) {
+
+      navigate("/payment");
+
+    } else {
 
       navigate("/address");
-    } catch (error) {
-      toast.error("Failed to Update Address");
-    }
-  };
 
-  const handleCancel = () => {
+    }
+
+  } catch (error) {
+
+    toast.error("Failed to Update Address");
+
+  }
+
+};
+
+ const handleCancel = () => {
 
   if (location.state?.fromCheckout) {
 
@@ -83,6 +103,13 @@ function EditAddress() {
 
       <div className="add-address-page">
         <div className="add-address-card">
+		<button
+  className="back-page-btn"
+  onClick={handleCancel}
+>
+  <ArrowLeft size={18} />
+  Back
+</button>
 
           <h1>Edit Address</h1>
 
@@ -160,9 +187,18 @@ function EditAddress() {
 
             </div>
 
-            <button type="submit">
-              Update Address
-            </button>
+           <div className="address-btns">
+
+  <button
+    type="submit"
+    className="save-btn"
+  >
+    Update Address
+  </button>
+
+
+
+</div>
 
           </form>
 

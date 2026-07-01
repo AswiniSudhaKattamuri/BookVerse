@@ -76,13 +76,34 @@ function Address() {
   <div className="header-left">
 
     {location.state?.fromCheckout && (
+<button
+  className="back-page-btn"
+  onClick={() => {
 
-      <button
-        className="back-btn"
-        onClick={() => navigate("/payment")}
-      >
-        ← Back
-      </button>
+    if (location.state?.fromBuyNow) {
+
+      navigate("/cart");
+
+    } else if (location.state?.fromCheckout) {
+
+      navigate("/checkout");
+
+    } else {
+
+      navigate("/address");
+
+    }
+
+  }}
+>
+  ← {
+    location.state?.fromBuyNow
+      ? "Back to Cart"
+      : location.state?.fromCheckout
+      ? "Back to Checkout"
+      : "Back"
+  }
+</button>
 
     )}
 

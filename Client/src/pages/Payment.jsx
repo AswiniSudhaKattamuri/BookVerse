@@ -6,14 +6,16 @@ import { getCart } from "../services/cartService";
 import { placeOrder } from "../services/orderService";
 import "./Payment.css";
 import { useCart } from "../context/CartContext";
-import QRCode from "react-qr-code";
+import OTPModal from "../components/OTPModal";
+import UPIModal from "../components/UPIModal";
 function Payment() {
 
   const navigate = useNavigate();
   const { setCartCount } = useCart();
 
   const [cart, setCart] = useState([]);
-
+  const [showUPI,setShowUPI]=useState(false);
+const [showOTPModal, setShowOTPModal] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState(
     "Cash on Delivery"
   );
@@ -32,6 +34,13 @@ function Payment() {
 
   const [bank, setBank] = useState("");
 
+  const [showBankLogin, setShowBankLogin] = useState(false);
+
+const [bankUsername, setBankUsername] = useState("");
+
+const [bankPassword, setBankPassword] = useState("");
+
+
   useEffect(() => {
     loadCart();
   }, []);
@@ -49,6 +58,42 @@ function Payment() {
 
     }
   };
+  const handleRealPayment = async () => {
+
+  try {
+
+    setLoading(true);
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    console.log("Before placeOrder");
+
+    await placeOrder(paymentMethod);
+
+    console.log("After placeOrder");
+
+    setCartCount(0);
+
+    toast.success("Payment Successful 🎉");
+
+    navigate("/order-success");
+
+  } catch (error) {
+
+    console.log(error);
+
+    toast.error(
+      error.response?.data?.message || "Payment Failed"
+    );
+
+  } finally {
+
+    setLoading(false);
+
+  }
+
+};
+
 
   const subtotal = cart.reduce(
     (sum, item) =>
@@ -64,98 +109,55 @@ function Payment() {
 
   const handlePayment = async () => {
 
+  if (paymentMethod === "UPI") {
+
+    setShowUPI(true);
+
+    return;
+
+  }
+
+  if (paymentMethod === "Credit / Debit Card") {
+
     if (
-      paymentMethod === "UPI" &&
-      !upiId.trim()
+      !cardNumber ||
+      !expiry ||
+      !cvv ||
+      !cardHolder
     ) {
 
-      toast.error("Enter your UPI ID");
+      toast.error("Fill all card details");
 
       return;
 
     }
 
-    if (
-      paymentMethod === "Credit / Debit Card"
-    ) {
+    setShowOTPModal(true);
 
-      if (
-        !cardNumber ||
-        !expiry ||
-        !cvv ||
-        !cardHolder
-      ) {
 
-        toast.error(
-          "Fill all card details"
-        );
+    return;
 
-        return;
+  }
 
-      }
+  if (paymentMethod === "Net Banking") {
 
-    }
+    if (!bank) {
 
-    if (
-      paymentMethod === "Net Banking" &&
-      !bank
-    ) {
-
-      toast.error(
-        "Select your bank"
-      );
+      toast.error("Select your bank");
 
       return;
 
     }
 
-    try {
+    setShowBankLogin(true);
 
-      setLoading(true);
+    return;
 
-      await new Promise((resolve) =>
-        setTimeout(resolve, 2000)
-      );
+  }
 
-      await placeOrder(paymentMethod);
+  await handleRealPayment();
 
-setCartCount(0);
-switch (paymentMethod) {
-
-  case "Cash on Delivery":
-    toast.success("Order Placed Successfully 📦");
-    break;
-
-  case "UPI":
-    toast.success("UPI Payment Successful 🎉");
-    break;
-
-  case "Credit / Debit Card":
-    toast.success("Card Payment Successful 💳");
-    break;
-
-  case "Net Banking":
-    toast.success("Bank Payment Successful 🏦");
-    break;
-
-  default:
-    toast.success("Order Successful 🎉");
-}
-
-navigate("/order-success");
-    } catch (error) {
-
-      toast.error(
-        error.response?.data?.message ||
-          "Payment Failed"
-      );
-
-    } finally {
-
-      setLoading(false);
-
-    }
-  };
+};
 
    return (
     <>
@@ -197,42 +199,9 @@ navigate("/order-success");
             </div>
           </label>
 
-          {paymentMethod === "UPI" && (
-            <div className="payment-input">
+         
 
-              {paymentMethod === "UPI" && (
-
-<div className="upi-box">
-
-<h3>Scan QR to Pay</h3>
-
-<div className="qr-container">
-
-<QRCode
-value={`upi://pay?pa=bookverse@oksbi&pn=BookVerse&am=${total}&cu=INR`}
-size={180}
-/>
-
-</div>
-
-<p>
-
-UPI ID
-
-<strong>
-
-bookverse@oksbi
-
-</strong>
-
-</p>
-
-</div>
-
-)}
-
-            </div>
-          )}
+            
 
           <label className="payment-option">
             <input
@@ -441,7 +410,9 @@ bookverse@oksbi
   ) : (
     <>
       <span className="shine"></span>
-      ✨ PLACE ORDER
+      {paymentMethod === "Cash on Delivery"
+  ? "📦 Place Order"
+  : `💳 Pay ₹${total}`}
     </>
   )}
 </button>
@@ -449,6 +420,89 @@ bookverse@oksbi
         </div>
 
       </div>
+	  {showBankLogin && (
+
+<div className="bank-modal">
+
+<div className="bank-card">
+
+<h2>{bank} Net Banking</h2>
+
+<input
+placeholder="Username"
+value={bankUsername}
+onChange={(e)=>setBankUsername(e.target.value)}
+/>
+
+<input
+type="password"
+placeholder="Password"
+value={bankPassword}
+onChange={(e)=>setBankPassword(e.target.value)}
+/>
+
+<button
+onClick={()=>{
+
+if(!bankUsername || !bankPassword){
+
+toast.error("Enter credentials");
+
+return;
+
+}
+
+setShowBankLogin(false);
+setShowOTPModal(true);
+
+}}
+>
+
+Login
+
+</button>
+
+</div>
+
+</div>
+
+)}
+
+{showOTPModal && (
+  <OTPModal
+    title="OTP Verification"
+    onCancel={() => setShowOTPModal(false)}
+    onVerify={async () => {
+
+      setShowOTPModal(false);
+
+      await handleRealPayment();
+
+    }}
+  />
+)}
+
+{showUPI && (
+
+<UPIModal
+
+total={total}
+
+onClose={() => setShowUPI(false)}
+
+onSelect={(app) => {
+
+  toast.success(`${app} Selected`);
+
+  setShowUPI(false);
+
+  setShowOTPModal(true);
+
+}}
+
+/>
+
+)}
 
     </>
   );
