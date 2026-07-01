@@ -1,188 +1,198 @@
-# 📚 BookVerse Backend
+# 📚 BookVerse
 
-##  Project Overview
-
-BookVerse Backend is a RESTful API built using the **MERN Stack** (Node.js, Express.js, MongoDB, and Mongoose). It powers an online bookstore with secure authentication, role-based authorization, book management, wishlist, shopping cart, and order management features.
-
-## 🛠️ Tech Stack
-
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT Authentication
-* bcrypt
-* dotenv
-* CORS
+An AI-powered full-stack online bookstore built using the MERN stack. BookVerse provides a seamless online book shopping experience with secure authentication, wishlist, cart, address management, AI-powered recommendations, and a realistic checkout flow.
 
 ---
 
-# 📂 Features
+## 🚀 Live Demo
 
-## 🔐 Authentication
+**Frontend:** Coming Soon
 
-* User Registration
-* User Login
-* JWT Token Generation
-* Protected Routes
-* User Profile
-
-## 👨‍💼 Authorization
-
-* Role-based Access Control
-* Admin-only Book Management
-
-## 📚 Books
-
-* Add Book (Admin)
-* Get All Books
-* Get Book by ID
-* Update Book (Admin)
-* Delete Book (Admin)
-* Search Books by Title
-* Filter Books by Category
-
-## ❤️ Wishlist
-
-* Add Book to Wishlist
-* View Wishlist
-* Remove Book from Wishlist
-
-## 🛒 Shopping Cart
-
-* Add Book to Cart
-* View Cart
-* Update Quantity
-* Remove Book from Cart
-
-## 📦 Orders
-
-* Place Order
-* View Order History
+**Backend:** Coming Soon
 
 ---
 
-# 📡 API Endpoints
+## 📸 Screenshots
 
-## Authentication
+> Add screenshots after deployment.
 
-| Method | Endpoint             | Description                |
-| ------ | -------------------- | -------------------------- |
-| POST   | `/api/auth/register` | Register a new user        |
-| POST   | `/api/auth/login`    | Login user                 |
-| GET    | `/api/auth/profile`  | Get logged-in user profile |
-
----
-
-## Books
-
-| Method | Endpoint                                    | Description              |
-| ------ | ------------------------------------------- | ------------------------ |
-| GET    | `/api/books`                                | Get all books            |
-| GET    | `/api/books/:id`                            | Get book by ID           |
-| GET    | `/api/books/search/title?title=value`       | Search books by title    |
-| GET    | `/api/books/filter/category?category=value` | Filter books by category |
-| POST   | `/api/books`                                | Add new book (Admin)     |
-| PUT    | `/api/books/:id`                            | Update book (Admin)      |
-| DELETE | `/api/books/:id`                            | Delete book (Admin)      |
+- 🏠 Home Page
+- 📖 Book Details
+- ❤️ Wishlist
+- 🛒 Cart
+- 📍 Address Management
+- 💳 Payment
+- 📦 Orders
+- 🤖 AI Chatbot
 
 ---
 
-## Wishlist
+# ✨ Features
 
-| Method | Endpoint                | Description               |
-| ------ | ----------------------- | ------------------------- |
-| POST   | `/api/wishlist`         | Add book to wishlist      |
-| GET    | `/api/wishlist`         | Get wishlist              |
-| DELETE | `/api/wishlist/:bookId` | Remove book from wishlist |
+### 👤 Authentication
+- User Registration
+- User Login
+- JWT Authentication
+- Protected Routes
+
+### 📚 Books
+- Browse Books
+- Search Books
+- Book Details
+- Categories
+- AI Recommendations
+
+### ❤️ Wishlist
+- Add to Wishlist
+- Remove from Wishlist
+
+### 🛒 Cart
+- Add to Cart
+- Remove from Cart
+- Update Quantity
+- Buy Now
+
+### 📍 Address
+- Add Address
+- Edit Address
+- Delete Address
+- Select Default Delivery Address
+
+### 💳 Payment
+- Cash on Delivery
+- UPI Payment (Demo)
+- Credit / Debit Card (Demo)
+- Net Banking (Demo)
+- OTP Verification (Demo)
+
+### 📦 Orders
+- Place Orders
+- Order History
+- Order Success Page
+
+### 🤖 AI Features
+- AI Chatbot
+- AI Book Recommendations
+
+### 🎨 UI
+- Responsive Design
+- Toast Notifications
+- Modern Dark Theme
+- Professional Footer
+- Responsive Layout
 
 ---
 
-## Cart
+# 🛠 Tech Stack
 
-| Method | Endpoint            | Description           |
-| ------ | ------------------- | --------------------- |
-| POST   | `/api/cart`         | Add book to cart      |
-| GET    | `/api/cart`         | Get cart              |
-| PUT    | `/api/cart/:bookId` | Update cart quantity  |
-| DELETE | `/api/cart/:bookId` | Remove book from cart |
+## Frontend
+
+- React.js
+- React Router DOM
+- Context API
+- Axios
+- React Hot Toast
+- Lucide React
+- CSS3
+
+## Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- bcrypt
+
+## AI
+
+- Groq API
 
 ---
 
-## Orders
-
-| Method | Endpoint      | Description              |
-| ------ | ------------- | ------------------------ |
-| POST   | `/api/orders` | Place an order           |
-| GET    | `/api/orders` | Get user's order history |
-
----
-
-# 🔒 Authentication
-
-Protected routes require a JWT token in the request header:
+# 📂 Folder Structure
 
 ```
-Authorization: Bearer <your_jwt_token>
+BookVerse
+│
+├── Client
+│   ├── src
+│   ├── public
+│   └── package.json
+│
+├── Server
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── middleware
+│   ├── config
+│   └── server.js
+│
+└── README.md
 ```
 
 ---
 
-# 👨‍💼 Admin Access
+# ⚙️ Installation
 
-The following endpoints require an authenticated user with the `admin` role:
-
-* `POST /api/books`
-* `PUT /api/books/:id`
-* `DELETE /api/books/:id`
-
-Regular users can browse books, manage wishlists, carts, and place orders but cannot modify the book catalog.
-
----
-
-# ▶️ Run Locally
-
-1. Install dependencies
+## Clone Repository
 
 ```bash
+git clone https://github.com/AswiniSudhaKattamuri/BookVerse.git
+```
+
+## Frontend
+
+```bash
+cd Client
 npm install
+npm run dev
 ```
 
-2. Create a `.env` file
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-```
-
-3. Start the server
+## Backend
 
 ```bash
-npm start
-```
-
-or
-
-```bash
+cd Server
+npm install
 node server.js
 ```
 
 ---
 
-# 📌 Future Enhancements
+# 🔐 Environment Variables
 
-* Product Reviews & Ratings
-* Payment Gateway Integration
-* Email Notifications
-* Inventory Management
-* Admin Dashboard
-* Sales Analytics
+Create a `.env` file inside the **Server** folder.
+
+```env
+PORT=5000
+
+MONGODB_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_secret_key
+
+GROQ_API_KEY=your_groq_api_key
+```
 
 ---
 
-# 👨‍💻 Developed By
+# 👨‍💻 Author
 
-**Aswini Sudha**
+**Aswini Sudha Kattamuri**
 
-A full-stack MERN bookstore backend demonstrating secure authentication, role-based authorization, RESTful API design, and e-commerce functionality.
+GitHub:
+https://github.com/AswiniSudhaKattamuri
+
+LinkedIn:
+(Add your LinkedIn URL)
+
+---
+
+# ⭐ If you like this project
+
+Give it a ⭐ on GitHub.
+
+---
+
+## 📄 License
+
+This project is developed for learning and portfolio purposes.
