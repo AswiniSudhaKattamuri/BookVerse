@@ -3,7 +3,7 @@
 }
 
 .hero{
-    height:520px;
+    height:480px;
     background-size:cover;
     background-position:center;
     position:relative;
@@ -20,20 +20,23 @@
 }
 
 .hero-content{
-    max-width:700px;
+    max-width:620px;
     text-align:center;
     color:white;
     animation:fadeUp 1s ease;
 }
 
 .hero-content h1{
-    font-size:64px;
+    font-size: 50px;
+    line-height: 1.15;
+    font-weight: 700;
     margin-bottom:20px;
     line-height:1.2;
 }
 
 .hero-content p{
-    font-size:22px;
+    font-size:20px;
+    line-height:1.5;
     color:#e5e7eb;
     margin-bottom:35px;
     line-height:1.6;
@@ -43,9 +46,10 @@
     background:#ff7b00;
     color:white;
     border:none;
-    padding:16px 34px;
+     padding:14px 30px;
+    font-size:16px;
     border-radius:50px;
-    font-size:18px;
+    
     display:inline-flex;
     align-items:center;
     gap:10px;
