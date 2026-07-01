@@ -25,9 +25,9 @@
     position:fixed;
     bottom:25px;
     right:25px;
-    width:450px;
-    max-width:95vw;
-    height:650px;
+     width:370px;
+    max-width:92vw;
+    height:560px;
     background:#141b2d;
     border-radius:18px;
     display:flex;
@@ -59,7 +59,8 @@
 .chat-header{
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
     color:#fff;
-    padding:18px 20px;
+        padding:14px 18px;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -67,7 +68,7 @@
 
 .chat-header h3{
     margin:0;
-    font-size:22px;
+    font-size:20px;
 }
 
 .chat-header span{
@@ -86,7 +87,7 @@
 
 .chat-body{
     flex:1;
-    padding:18px;
+    padding:14px;
     overflow-y:auto;
     background:#0f172a;
 }
@@ -231,7 +232,7 @@
 }
 
 .chat-footer{
-    padding:16px;
+    padding:12px;
     display:flex;
     gap:12px;
     background:#141b2d;
@@ -240,7 +241,7 @@
 
 .chat-footer input{
     flex:1;
-    height:48px;
+    height:42px;
     border:none;
     border-radius:12px;
     background:#1e293b;
@@ -255,8 +256,8 @@
 }
 
 .chat-footer button{
-    width:50px;
-    height:48px;
+     width:46px;
+    height:42px;
     border:none;
     border-radius:12px;
     background:#2563eb;
