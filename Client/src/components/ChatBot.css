@@ -27,7 +27,8 @@
     right:25px;
      width:370px;
     max-width:92vw;
-    height:560px;
+    height:80vh;
+    max-height:620px;
     background:#141b2d;
     border-radius:18px;
     display:flex;
@@ -168,7 +169,7 @@
 }
 
 .message-text{
-    padding:14px 16px;
+    padding:10px 12px;
     border-radius:16px;
     white-space:pre-wrap;
     word-break:break-word;
@@ -232,7 +233,7 @@
 }
 
 .chat-footer{
-    padding:12px;
+    padding:10px;
     display:flex;
     gap:12px;
     background:#141b2d;
@@ -304,11 +305,12 @@
     border:none;
     background:#1e293b;
     color:white;
-    padding:10px 16px;
+    padding:8px 12px;
+    font-size:12px;
     border-radius:25px;
     cursor:pointer;
     transition:.3s;
-    font-size:13px;
+    
 }
 
 .suggestions button:hover{
