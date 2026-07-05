@@ -37,15 +37,16 @@ function Sidebar({ filters, setFilters }) {
     })
   }
   style={{
-    width: "100%",
-    height: "45px",
-    padding: "12px 15px",
+     width: "100%",
+    height: "38px",
+    padding: "8px 12px",
     background: "#1f2937",
     border: "1px solid #374151",
-    borderRadius: "10px",
+    borderRadius: "8px",
     color: "#fff",
-    fontSize: "16px",
+    fontSize: "14px",
     display: "block",
+    boxSizing: "border-box",
   }}
 />
 

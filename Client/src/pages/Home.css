@@ -10,12 +10,12 @@
 =========================== */
 
 .sidebar {
-  width: 380px;
-  min-width: 380px;
-  min-height: 100vh;
+  width: 300px;
+  min-width: 300px;
+  height: fit-content;
   background: #111827;
   border-radius: 12px;
-  padding: 28px;
+  padding: 16px;
   color: white;
   box-sizing: border-box;
 }
@@ -25,7 +25,8 @@
 =========================== */
 
 .books-container {
-  width: 75%;
+    flex: 1;
+  min-width: 0;
   background: #0f172a;
   border-radius: 16px;
   padding: 24px;

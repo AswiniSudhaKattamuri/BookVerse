@@ -14,42 +14,46 @@
 }
 
 .register-card {
-  width: 450px;
-  padding: 45px;
-  border-radius: 22px;
+    width: 330px;
+  padding: 16px 28px;
+  border-radius: 16px;
+
   background: rgba(17, 24, 39, 0.72);
   backdrop-filter: blur(18px);
+
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 50px rgba(37, 99, 235, 0.25);
+
+  box-shadow:
+    0 0 50px rgba(37, 99, 235, 0.25);
+
   color: white;
 }
 
 .logo {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #60a5fa;
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .register-card h2 {
-  font-size: 34px;
-  margin-bottom: 10px;
+  font-size: 23px;
+  margin-bottom: 4px;
 }
 
 .register-card p {
-  color: #cbd5e1;
-  margin-bottom: 25px;
+   font-size: 13px;
+  margin-bottom: 10px;
 }
 
 .register-input {
+	 padding: 9px 12px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  border-radius: 9px;
   width: 100%;
-  padding: 15px;
-  margin-bottom: 18px;
   background: #0f172a;
   color: white;
-  border: none;
-  border-radius: 12px;
+  border: 1px solid #334155;
   outline: none;
-  font-size: 16px;
   box-sizing: border-box;
 }
 
@@ -59,12 +63,12 @@
 
 .register-btn {
   width: 100%;
-  padding: 15px;
+  padding: 9px;
   border: none;
   border-radius: 12px;
   background: #2563eb;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -74,25 +78,59 @@
   transform: translateY(-2px);
 }
 
-.bottom-text {
-  text-align: center;
-  margin-top: 25px;
-}
+
 
 .bottom-text span {
   color: #60a5fa;
   font-weight: bold;
   cursor: pointer;
 }
+
+
+
 .password-container {
   position: relative;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
+
 
 .password-container .register-input {
   width: 100%;
-  padding-right: 50px;
+  padding-right: 45px;
+  margin-bottom: 0;
   box-sizing: border-box;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 10px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+.bottom-text {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0 !important;
+  font-size: 12px;
+}
+
+.password-error {
+  color: #ef4444 !important;
+  font-size: 12px !important;
+  line-height: 1.4;
+  margin-top: -4px !important;
+  margin-bottom: 10px !important;
+  font-weight: 500;
 }
 
 .eye-icon {
@@ -114,11 +152,4 @@
   font-size: 13px;
   color: #94a3b8;
   margin: -8px 0 16px;
-}
-.password-error {
-  color: #ef4444;
-  font-size: 13px;
-  margin-top: 8px;
-  margin-bottom: 15px;
-  font-weight: 500;
 }

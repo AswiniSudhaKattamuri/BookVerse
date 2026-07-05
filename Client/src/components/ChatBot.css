@@ -1,9 +1,9 @@
 .chat-toggle{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    width:70px;
-    height:70px;
+     position:fixed;
+    bottom:20px;
+    right:20px;
+    width:56px;
+    height:56px;
     border:none;
     border-radius:50%;
     background:linear-gradient(135deg,#2563eb,#60a5fa);
@@ -12,7 +12,7 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    box-shadow:0 12px 30px rgba(37,99,235,.45);
+    box-shadow:0 10px 25px rgba(37,99,235,.45);
     transition:.3s;
     z-index:1000;
 }
@@ -25,9 +25,9 @@
     position:fixed;
     bottom:25px;
     right:25px;
-     width:370px;
+     width:300px;
     max-width:92vw;
-    height:80vh;
+    height:70vh;
     max-height:620px;
     background:#141b2d;
     border-radius:18px;
@@ -60,7 +60,7 @@
 .chat-header{
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
     color:#fff;
-        padding:14px 18px;
+        padding:12px 15px;
 
     display:flex;
     justify-content:space-between;
@@ -69,11 +69,11 @@
 
 .chat-header h3{
     margin:0;
-    font-size:20px;
+    font-size:18px;
 }
 
 .chat-header span{
-    font-size:13px;
+    font-size:12px;
     opacity:.85;
 }
 
@@ -142,8 +142,8 @@
 }
 
 .avatar{
-    width:36px;
-    height:36px;
+    width:32px;
+    height:32px;
     border-radius:50%;
     background:linear-gradient(135deg,#2563eb,#60a5fa);
     color:#fff;
@@ -156,8 +156,8 @@
 }
 
 .user-avatar{
-    width:36px;
-    height:36px;
+    width:32px;
+    height:32px;
     border-radius:50%;
     background:#16a34a;
     color:#fff;
@@ -170,12 +170,13 @@
 
 .message-text{
     padding:10px 12px;
-    border-radius:16px;
+    border-radius:14px;
     white-space:pre-wrap;
     word-break:break-word;
-    line-height:1.7;
+    line-height:1.5;
     color:white;
-    max-width:75%;
+    max-width:85%;
+    font-size:14px;
 }
 
 .ai-message .message-text{
@@ -206,8 +207,8 @@
 }
 
 .typing span{
-    width:10px;
-    height:10px;
+    width:8px;
+    height:8px;
     border-radius:50%;
     background:#4da3ff;
     animation:bounce 1.4s infinite ease-in-out;
@@ -242,7 +243,7 @@
 
 .chat-footer input{
     flex:1;
-    height:42px;
+    height:35px;
     border:none;
     border-radius:12px;
     background:#1e293b;
@@ -257,8 +258,8 @@
 }
 
 .chat-footer button{
-     width:46px;
-    height:42px;
+     width:40px;
+    height:40px;
     border:none;
     border-radius:12px;
     background:#2563eb;

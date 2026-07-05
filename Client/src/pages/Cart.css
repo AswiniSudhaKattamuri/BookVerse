@@ -1,37 +1,39 @@
 .cart-container {
   display: flex;
-  gap: 30px;
-  padding: 30px;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 24px;
   background: #020817;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 70px);
 }
 
 /* Left Section */
 .cart-left {
-  flex: 3;
+  flex: 1;
+  min-width: 0;
 }
 
 .cart-heading {
   color: white;
-  font-size: 32px;
-  margin-bottom: 25px;
+  font-size: 26px;
+  margin-bottom: 22px;
 }
 
 .empty-cart {
-  color: #94a3b8;
-  font-size: 22px;
-  margin-top: 40px;
+   color: #94a3b8;
+  font-size: 18px;
+  margin-top: 30px;
 }
 
 /* Cart Card */
 .cart-card {
-  display: flex;
-  gap: 25px;
+   display: flex;
+  gap: 18px;
   background: #111827;
   border: 1px solid #1e293b;
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 20px;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
   transition: 0.3s;
 }
 
@@ -42,10 +44,10 @@
 
 /* Book Image */
 .cart-image {
-  width: 150px;
-  height: 220px;
+   width: 110px;
+  height: 165px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 /* Book Details */
@@ -58,26 +60,26 @@
 
 .cart-details h3 {
   color: white;
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 19px;
+  margin-bottom: 6px;
 }
 
 .author {
   color: #94a3b8;
-  font-size: 17px;
-  margin-bottom: 12px;
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
 .cart-details h4 {
   color: #3b82f6;
-  font-size: 26px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 7px;
 }
 
 .delivery {
   color: #22c55e;
-  font-size: 15px;
-  margin-bottom: 18px;
+  font-size: 13px;
+  margin-bottom: 12px;
 }
 
 /* Quantity Controls */
@@ -129,29 +131,31 @@
 
 /* Right Section */
 .cart-right {
-  flex: 1;
+   width: 320px;
+  min-width: 320px;
+  flex: none;
   background: #111827;
-  padding: 24px;
-  border-radius: 16px;
+  padding: 20px;
+  border-radius: 14px;
   color: white;
   height: fit-content;
   position: sticky;
-  top: 100px;
+  top: 85px;
   border: 1px solid #1e293b;
 }
 
 .price-heading {
-  color: #94a3b8;
-  font-size: 18px;
+ color: #94a3b8;
+  font-size: 16px;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .summary-row {
-  display: flex;
+   display: flex;
   justify-content: space-between;
-  margin: 15px 0;
-  font-size: 17px;
+  margin: 13px 0;
+  font-size: 15px;
 }
 
 .green {
@@ -160,27 +164,27 @@
 }
 
 .total-row {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: bold;
 }
 
 .saving-text {
   color: #22c55e;
-  margin-top: 18px;
-  font-size: 15px;
+  margin-top: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
 /* Checkout Button */
 .checkout-button {
-  width: 100%;
-  margin-top: 24px;
-  padding: 15px;
+ width: 100%;
+  margin-top: 18px;
+  padding: 12px;
   border: none;
-  border-radius: 10px;
+  border-radius: 9px;
   background: #f97316;
   color: white;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
