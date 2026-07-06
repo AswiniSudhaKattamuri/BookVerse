@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 import BookCard from "../components/BookCard";
 import Sidebar from "../components/Sidebar";
 import "./Home.css";
-
+import { useState } from "react";
 import { useBooks } from "../viewmodels/useBooks";
 import { useAIBooks } from "../context/AIBookContext";
 
@@ -19,7 +19,7 @@ function Home() {
     aiBooks,
     setAiBooks,
   } = useAIBooks();
-
+ const [showSidebar, setShowSidebar] = useState(false);
   const remainingBooks = books.filter(
     (book) =>
       !aiBooks.some(
@@ -33,13 +33,30 @@ function Home() {
       <Navbar />
 
       <Hero />
+	  <button
+  className="mobile-filter-btn"
+  onClick={() => setShowSidebar(true)}
+>
+  ☰ Filters
+</button>
 
       <div className="content-layout">
 
-        <Sidebar
-          filters={filters}
-          setFilters={setFilters}
-        />
+        <div className={`sidebar-mobile-wrapper ${showSidebar ? "open" : ""}`}>
+
+  <button
+    className="close-sidebar-btn"
+    onClick={() => setShowSidebar(false)}
+  >
+    ✕
+  </button>
+
+  <Sidebar
+    filters={filters}
+    setFilters={setFilters}
+  />
+
+</div>
 
         <div className="books-container">
 
