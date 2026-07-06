@@ -1,42 +1,45 @@
 .add-address-page {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 60px);
   background: #020817;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px;
+  align-items: flex-start;
+  padding: 28px 20px;
 }
 
 .add-address-card {
   width: 100%;
-  max-width: 700px;
+  max-width: 560px;
   background: #111827;
-  padding: 35px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  padding: 22px 26px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
 .add-address-card h1 {
   color: white;
-  margin-bottom: 30px;
+  font-size: 25px;
+  margin: 0 0 20px;
   text-align: center;
 }
 
 .add-address-card form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
 
 .add-address-card input {
   width: 100%;
-  padding: 15px;
-  border-radius: 10px;
+  height: 42px;
+  padding: 0 13px;
+  border-radius: 8px;
   border: 1px solid #334155;
   background: #1e293b;
   color: white;
-  font-size: 15px;
+  font-size: 14px;
   outline: none;
+  box-sizing: border-box;
 }
 
 .add-address-card input:focus {
@@ -45,126 +48,65 @@
 
 .row {
   display: flex;
-  gap: 18px;
+  gap: 12px;
 }
 
 .row input {
   flex: 1;
+  min-width: 0;
 }
 
-.add-address-card button {
-  margin-top: 15px;
-  padding: 15px;
+.address-btns {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.add-address-card .save-btn,
+.add-address-card .cancel-btn {
+  flex: 1;
+  margin-top: 0;
+  padding: 11px;
   border: none;
-  border-radius: 10px;
-  background: #f97316;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.add-address-card button:hover {
-  background: #ea580c;
+.add-address-card .save-btn {
+  background: #2563eb;
+  color: white;
 }
 
-@media(max-width:768px){
-
-.row{
-    flex-direction:column;
+.add-address-card .save-btn:hover {
+  background: #1d4ed8;
 }
 
-.add-address-card{
-    padding:25px;
+.add-address-card .cancel-btn {
+  background: #334155;
+  color: white;
 }
 
-}
-.address-btns{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
+.add-address-card .cancel-btn:hover {
+  background: #475569;
 }
 
-.save-btn,
-.cancel-btn{
-    flex:1;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
+@media (max-width: 600px) {
+  .add-address-page {
+    padding: 20px 15px;
+  }
 
-.save-btn{
-    background:#2563eb;
-    color:white;
-}
+  .add-address-card {
+    padding: 20px;
+  }
 
-.save-btn:hover{
-    background:#1d4ed8;
-}
+  .row {
+    flex-direction: column;
+  }
 
-.cancel-btn{
-    background:#334155;
-    color:white;
-}
-
-.cancel-btn:hover{
-    background:#475569;
-}
-.address-btns{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-}
-
-.save-btn,
-.cancel-btn{
-    flex:1;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.save-btn{
-    background:#2563eb;
-    color:white;
-}
-
-.save-btn:hover{
-    background:#1d4ed8;
-}
-
-.cancel-btn{
-    background:#334155;
-    color:white;
-}
-
-.cancel-btn:hover{
-    background:#475569;
-}
-.back-page-btn{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    background:none;
-    border:none;
-    color:#2563eb;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    margin-bottom:18px;
-    transition:.3s;
-}
-
-.back-page-btn:hover{
-    color:#1d4ed8;
-    transform:translateX(-4px);
+  .address-btns {
+    flex-direction: column;
+  }
 }

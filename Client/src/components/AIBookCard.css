@@ -1,43 +1,103 @@
-.ai-book-card{
-    display:flex;
-    gap:15px;
-    margin-top:15px;
-    background:#1e293b;
-    border-radius:12px;
-    padding:12px;
+.ai-book-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 12px;
+  padding: 10px;
+
+  background: #1e293b;
+
+  border: 1px solid #334155;
+  border-radius: 10px;
+
+  transition: 0.3s;
 }
 
-.ai-book-card img{
-    width:90px;
-    height:130px;
-    object-fit:cover;
-    border-radius:8px;
+.ai-book-card:hover {
+  border-color: #2563eb;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, 0.15);
 }
 
-.ai-book-info{
-    flex:1;
+.ai-book-card img {
+  width: 72px;
+  height: 105px;
+
+  flex-shrink: 0;
+
+  object-fit: contain;
+
+  background: #0f172a;
+
+  border-radius: 7px;
 }
 
-.ai-book-info h4{
-    color:white;
-    margin-bottom:8px;
+.ai-book-info {
+  flex: 1;
+  min-width: 0;
 }
 
-.ai-book-info p{
-    color:#cbd5e1;
-    font-size:14px;
+.ai-book-info h4 {
+  color: white;
+
+  font-size: 14px;
+  line-height: 1.35;
+
+  margin: 0 0 5px;
 }
 
-.ai-book-info h3{
-    color:#3b82f6;
-    margin:10px 0;
+.ai-book-info p {
+  color: #94a3b8;
+
+  font-size: 12px;
+
+  margin: 0 0 6px;
 }
 
-.ai-book-info button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:8px 16px;
-    border-radius:8px;
-    cursor:pointer;
+.ai-book-info h3 {
+  color: #3b82f6;
+
+  font-size: 16px;
+
+  margin: 6px 0 8px;
+}
+
+.ai-book-info button {
+  background: #2563eb;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  padding: 7px 12px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.ai-book-info button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 450px) {
+  .ai-book-card img {
+    width: 62px;
+    height: 92px;
+  }
+
+  .ai-book-info h4 {
+    font-size: 13px;
+  }
+
+  .ai-book-info button {
+    padding: 6px 10px;
+  }
 }

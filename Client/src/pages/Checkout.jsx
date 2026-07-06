@@ -110,7 +110,7 @@ const handleContinue = () => {
 
       <div className="checkout-container">
         <div className="checkout-left">
-          <div className="address-card">
+          <div className="checkout-address-card">
             <h2>📍 Delivery Address</h2>
 
             <div className="address-box">
