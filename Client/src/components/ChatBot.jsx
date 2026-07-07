@@ -39,6 +39,8 @@ const { setAiBooks } = useAIBooks();
     "🕵️ Mystery",
     "📚 Thriller",
     "₹ Books under 500",
+  "📕 Telugu Books",
+  "🕉️ Telugu Spiritual Books",
   ];
 
   const storedUser = localStorage.getItem("user");
@@ -214,20 +216,20 @@ useEffect(() => {
 
   const handleSuggestion = (text) => {
 
-    let cleaned = text;
+  const cleaned = text
+    .replace("💕 ", "")
+    .replace("💰 ", "")
+    .replace("🌱 ", "")
+    .replace("👻 ", "")
+    .replace("🧙 ", "")
+    .replace("🕵️ ", "")
+    .replace("📚 ", "")
+    .replace("📕 ", "")
+    .replace("🕉️ ", "");
 
-    cleaned = cleaned.replace("💕 ", "");
-    cleaned = cleaned.replace("💰 ", "");
-    cleaned = cleaned.replace("🌱 ", "");
-    cleaned = cleaned.replace("👻 ", "");
-    cleaned = cleaned.replace("🧙 ", "");
-    cleaned = cleaned.replace("🕵️ ", "");
-    cleaned = cleaned.replace("📚 ", "");
-    cleaned = cleaned.replace("₹ ", "");
+  sendSuggestion(cleaned);
 
-    sendSuggestion(cleaned);
-
-  };
+};
     return (
     <>
       {!open && (

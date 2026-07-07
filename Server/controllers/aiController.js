@@ -3,58 +3,124 @@ const { askAI } = require("../services/aiService");
 
 const chatWithAI = async (req, res) => {
   try {
-
     const { messages } = req.body;
 
     const message =
       messages[messages.length - 1].text;
 
-    const messageLower = message.toLowerCase();
+    const text = message.toLowerCase().trim();
 
     let query = {};
 
+
+    // LANGUAGE
+
+    if (
+      text.includes("telugu") ||
+      message.includes("తెలుగు")
+    ) {
+      query.language = {
+        $regex: "^Telugu$",
+        $options: "i",
+      };
+    }
+
+    if (text.includes("english")) {
+      query.language = {
+        $regex: "^English$",
+        $options: "i",
+      };
+    }
+
+
+    // CATEGORY
+
     const categories = [
-      "romance",
       "romantic thriller",
+      "science fiction",
+      "self help",
+      "romance",
       "thriller",
       "mystery",
       "horror",
       "fantasy",
-      "science fiction",
-      "selfhelp",
       "business",
       "finance",
       "biography",
       "classic",
+      "spiritual",
+      "stories",
+      "children",
+      "humor",
+      "poetry",
+      "fiction",
+      "dystopian",
     ];
 
-    const matchedCategory = categories.find((category) =>
-      messageLower.includes(category)
+    const matchedCategory = categories.find(
+      (category) => text.includes(category)
     );
 
     if (matchedCategory) {
-      query.category = new RegExp(
-        `^${matchedCategory}$`,
-        "i"
-      );
-    }
-
-    const budget = message.match(/\d+/);
-
-    if (budget) {
-      query.price = {
-        $lte: Number(budget[0]),
+      query.category = {
+        $regex: `^${matchedCategory}$`,
+        $options: "i",
       };
     }
 
-    const books = await Book.find(query).limit(3);
+
+    // PRICE
+
+    const priceMatch = text.match(
+      /(?:under|below|less than|within)\s*(?:₹|rs\.?|rupees?)?\s*(\d+)/i
+    );
+
+    if (priceMatch) {
+      query.price = {
+        $lte: Number(priceMatch[1]),
+      };
+    }
+
+
+    console.log("USER:", message);
+    console.log("QUERY:", query);
+
+
+    console.log("MESSAGE RECEIVED:", message);
+console.log("QUERY CREATED:", query);
+
+const books = await Book.find(query).limit(3);
+
+console.log(
+  "BOOKS RETURNED:",
+  books.map((book) => ({
+    title: book.title,
+    language: book.language,
+    category: book.category,
+    price: book.price,
+  }))
+);
+
+
+    console.log(
+      "RESULT:",
+      books.map((book) => ({
+        title: book.title,
+        language: book.language,
+        category: book.category,
+        price: book.price,
+      }))
+    );
+
 
     if (books.length === 0) {
       return res.json({
         reply:
-          "😔 Sorry! I couldn't find any books matching your request in BookVerse. Try another category or budget.",
+          "😔 I couldn't find matching books in our collection. Try another language, category, or budget.",
+        books: [],
       });
     }
+
 
     const formattedBooks = books
       .map(
@@ -62,33 +128,34 @@ const chatWithAI = async (req, res) => {
 Title: ${book.title}
 Author: ${book.author}
 Category: ${book.category}
+Language: ${book.language}
 Price: ₹${book.price}
 Description: ${book.description}
-Stock: ${book.stock}
 `
       )
       .join("\n");
 
+
     const reply = await askAI(
-  messages,
-  formattedBooks
-);
+      messages,
+      formattedBooks
+    );
 
-res.json({
-  reply,
-  books,
-});
 
-  } catch (error) {
-
-    console.log(error);
-
-    res.status(500).json({
-      message: "AI Error",
+    return res.json({
+      reply,
+      books,
     });
 
+  } catch (error) {
+    console.log("AI ERROR:", error);
+
+    return res.status(500).json({
+      message: "AI Error",
+    });
   }
 };
+
 
 module.exports = {
   chatWithAI,
