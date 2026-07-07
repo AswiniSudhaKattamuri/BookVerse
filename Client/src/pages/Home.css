@@ -161,6 +161,11 @@
 }
 
 
+.mobile-filter-btn,
+.close-sidebar-btn {
+  display: none;
+}
+
 /* ===========================
    Small Laptop / Tablet
    2 cards per row
@@ -199,7 +204,7 @@
 
   .mobile-filter-btn {
     display: block;
-    margin: 10px 12px 14px;
+    margin: 10px 12px ;
 
     padding: 10px 16px;
 
@@ -213,8 +218,11 @@
     font-weight: 600;
 
     cursor: pointer;
+	 display: block !important;
   }
 
+
+  
 
   /* Sidebar Drawer */
 
@@ -236,7 +244,7 @@
     z-index: 9999;
 
     transition: left 0.3s ease;
-
+	flex-shrink:0;
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.4);
   }
 
@@ -261,19 +269,20 @@
 
     position: absolute;
 
-    top: 13px;
-    right: 15px;
+    top: 12px;
+    right: 14px;
 
     border: none;
     background: transparent;
 
     color: white;
 
-    font-size: 21px;
+    font-size: 22px;
 
     cursor: pointer;
 
-    z-index: 2;
+	  display: block !important;
+    z-index: 10;
   }
 
 
@@ -362,6 +371,36 @@
     margin-bottom: 15px;
   }
 
+   .sidebar-mobile-wrapper {
+    position: fixed;
+    top: 0;
+    left: -290px;
+    width: 270px;
+    height: 100vh;
+    padding-top: 48px;
+    background: #111827;
+    overflow-y: auto;
+    z-index: 9999;
+    transition: left 0.3s ease;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.4);
+  }
+
+    .sidebar-mobile-wrapper.open {
+    left: 0;
+  }
+
+
+}
+
+@media (min-width: 769px) {
+  .sidebar-mobile-wrapper {
+    position: static;
+    width: 240px;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    overflow: visible;
+  }
 }
 
 

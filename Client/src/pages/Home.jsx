@@ -39,24 +39,26 @@ function Home() {
 >
   ☰ 
 </button>
+	
+<div className="content-layout">
 
-      <div className="content-layout">
-
-        <div className={`sidebar-mobile-wrapper ${showSidebar ? "open" : ""}`}>
-
-  <button
-    className="close-sidebar-btn"
-    onClick={() => setShowSidebar(false)}
+  <div
+    className={`sidebar-mobile-wrapper ${
+      showSidebar ? "open" : ""
+    }`}
   >
-    ✕
-  </button>
+    <button
+      className="close-sidebar-btn"
+      onClick={() => setShowSidebar(false)}
+    >
+      ✕
+    </button>
 
-  <Sidebar
-    filters={filters}
-    setFilters={setFilters}
-  />
-
-</div>
+    <Sidebar
+      filters={filters}
+      setFilters={setFilters}
+    />
+  </div>
 
         <div className="books-container">
 
