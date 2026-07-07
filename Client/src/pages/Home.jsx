@@ -37,7 +37,7 @@ function Home() {
   className="mobile-filter-btn"
   onClick={() => setShowSidebar(true)}
 >
-  ☰ Filters
+  ☰ 
 </button>
 
       <div className="content-layout">
