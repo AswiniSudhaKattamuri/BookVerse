@@ -1,8 +1,9 @@
 .content-layout {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 24px;
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  padding: 30px;
 }
 
 /* ===========================
@@ -10,8 +11,8 @@
 =========================== */
 
 .sidebar {
-  width: 300px;
-  min-width: 300px;
+  width:100%;
+  min-width: 0;
   height: fit-content;
   background: #111827;
   border-radius: 12px;
