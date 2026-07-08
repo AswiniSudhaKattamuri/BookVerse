@@ -24,8 +24,14 @@ export const WishlistProvider = ({ children }) => {
   };
 
   useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
     loadWishlistCount();
-  }, []);
+  } else {
+    setWishlistCount(0);
+  }
+}, []);
 
   return (
     <WishlistContext.Provider

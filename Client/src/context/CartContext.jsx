@@ -22,8 +22,14 @@ export const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
     loadCartCount();
-  }, []);
+  } else {
+    setCartCount(0);
+  }
+}, []);
 
   return (
     <CartContext.Provider
