@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import { getCart } from "../services/cartService";
 import { placeOrder } from "../services/orderService";
 import "./Payment.css";
+import { getAddresses } from "../services/addressServices";
 import { useCart } from "../context/CartContext";
 import OTPModal from "../components/OTPModal";
 import UPIModal from "../components/UPIModal";
@@ -107,15 +108,56 @@ const [bankPassword, setBankPassword] = useState("");
 
   const total = subtotal + delivery - discount;
 
-  const handlePayment = async () => {
+
+  const checkDeliveryAddress = async () => {
+  try {
+    const data = await getAddresses();
+
+    const addresses = data.addresses || [];
+
+    const defaultAddress = addresses.find(
+      (address) => address.isDefault
+    );
+
+    if (!defaultAddress) {
+      toast.error("Please select a delivery address");
+
+      navigate("/address", {
+        state: {
+          fromCheckout: true,
+          returnToPayment: true,
+        },
+      });
+
+      return false;
+    }
+
+    return true;
+
+  } catch (error) {
+    console.log(error);
+
+    toast.error("Unable to check delivery address");
+
+    return false;
+  }
+};
+const handlePayment = async () => {
+
+  const hasAddress = await checkDeliveryAddress();
+
+  if (!hasAddress) {
+    return;
+  }
+
 
   if (paymentMethod === "UPI") {
 
     setShowUPI(true);
 
     return;
-
   }
+
 
   if (paymentMethod === "Credit / Debit Card") {
 
@@ -129,15 +171,13 @@ const [bankPassword, setBankPassword] = useState("");
       toast.error("Fill all card details");
 
       return;
-
     }
 
     setShowOTPModal(true);
 
-
     return;
-
   }
+
 
   if (paymentMethod === "Net Banking") {
 
@@ -146,17 +186,15 @@ const [bankPassword, setBankPassword] = useState("");
       toast.error("Select your bank");
 
       return;
-
     }
 
     setShowBankLogin(true);
 
     return;
-
   }
 
-  await handleRealPayment();
 
+  await handleRealPayment();
 };
 
    return (

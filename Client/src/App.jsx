@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -19,43 +25,193 @@ import Payment from "./pages/Payment";
 import ChatBot from "./components/ChatBot";
 import Footer from "./components/Footer";
 
+
+function ProtectedRoute({ children }) {
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+}
+
+
+function PublicRoute({ children }) {
+
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+}
+
+
 function Layout() {
 
   const location = useLocation();
 
+  const token = localStorage.getItem("token");
+
   const showFooter =
-    location.pathname === "/" ||
-    location.pathname.startsWith("/book/");
+    token &&
+    (
+      location.pathname === "/" ||
+      location.pathname.startsWith("/book/")
+    );
 
   return (
     <>
+
       <Routes>
 
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/book/:id" element={<BookDetails />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/address" element={<Address />} />
-        <Route path="/add-address" element={<AddAddress />} />
-        <Route path="/edit-address/:id" element={<EditAddress />} />
-        <Route path="/order-success" element={<OrderSuccess />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+
+
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/wishlist"
+          element={
+            <ProtectedRoute>
+              <Wishlist />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute>
+              <Orders />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/book/:id"
+          element={
+            <ProtectedRoute>
+              <BookDetails />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/address"
+          element={
+            <ProtectedRoute>
+              <Address />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/add-address"
+          element={
+            <ProtectedRoute>
+              <AddAddress />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/edit-address/:id"
+          element={
+            <ProtectedRoute>
+              <EditAddress />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/payment"
+          element={
+            <ProtectedRoute>
+              <Payment />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/order-success"
+          element={
+            <ProtectedRoute>
+              <OrderSuccess />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="*" element={<NotFound />} />
 
       </Routes>
 
+
       {showFooter && <Footer />}
 
-      <ChatBot />
+
+      {token && <ChatBot />}
+
     </>
   );
 }
+
+
 function App() {
+
   return (
     <BrowserRouter>
       <Layout />
@@ -64,4 +220,3 @@ function App() {
 }
 
 export default App;
-

@@ -31,7 +31,7 @@ function Register() {
       setPasswordError("");
     } else if (!passwordRegex.test(value)) {
       setPasswordError(
-        "Password must be 7 characters and include uppercase, lowercase, number and special character."
+        "Password must be 8 characters and include uppercase, lowercase, number and special character."
       );
     } else {
       setPasswordError("");

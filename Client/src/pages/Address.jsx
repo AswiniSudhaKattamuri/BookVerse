@@ -41,27 +41,30 @@ function Address() {
     }
   };
 
-  const handleDefault = async (id) => {
+ const handleDefault = async (id) => {
   try {
 
     await setDefaultAddress(id);
 
     toast.success("Delivery Address Selected");
 
-    if (location.state?.fromCheckout) {
+    if (
+      location.state?.fromCheckout ||
+      location.state?.returnToPayment
+    ) {
 
       navigate("/payment");
 
       return;
-
     }
 
-    loadAddresses();
+    await loadAddresses();
 
   } catch (error) {
 
-    toast.error("Failed");
+    console.log(error);
 
+    toast.error("Failed to select address");
   }
 };
 
